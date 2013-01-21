@@ -1,5 +1,5 @@
-VFP - Visual Flow Programming
-=============================
+VFP.js - Visual Flow Programming
+================================
 
 This is a simple JS tool to enable visual representation of certain things linked together. It features a simple "editor" where you move the boxes around and make connections between them. 
 
