@@ -41,6 +41,32 @@
     
     
     
+    function initFromJSON() {
+    	var jsonStr = '{"boxObjs":{"box0":{"divId":"box0","numOfOutputs":"1","hasInput":true,"x":290,"y":70},"box1":{"divId":"box1","numOfOutputs":"1","hasInput":true,"x":590,"y":190},"box2":{"divId":"box2","numOfOutputs":"1","hasInput":true,"x":900,"y":60},"box3":{"divId":"box3","numOfOutputs":"1","hasInput":true,"x":280,"y":320}},"connections":[["box0-start0","box1-end0"],["box1-start0","box2-end0"],["box3-start0","box1-end0"]]}';
+    	objUnserialize = JSON.parse(jsonStr);
+    	
+    	boxObjs = objUnserialize.boxObjs;
+    	
+    	for (boxIn in boxObjs) {
+    		boxes.push(boxObjs[boxIn].divId);
+    		createBoxElement(boxObjs[boxIn]);
+    		boxCount++;
+    	}
+    	
+    	
+    	
+    	for (connI in objUnserialize.connections) {
+    		addConnection(objUnserialize.connections[connI][0],objUnserialize.connections[connI][1],dummy);	
+    	
+    	}
+    	
+    	initDraggableBoxes();
+
+    }
+    
+    
+    
+    
     $(function() {
     	
     	//function to handle the semantics of adding connections 
