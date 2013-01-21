@@ -1,0 +1,123 @@
+<html>
+
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/box.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    
+    <script src="js/box.js"></script> 
+ 
+	<script>
+    
+
+    var vfpCanvas0 = {};
+    var boxCount = 0;
+    
+    
+    function addBox() {
+    	
+		var	numOfOuts = $('input:radio[name=numOfOut]:checked').val();
+    	var hasInput = ($('input:checkbox[name=hasInput]').attr('checked') == "checked");
+    	var boxId = "box"+boxCount;
+		
+    	vfpCanvas0.addNewBox(boxId,numOfOuts,hasInput,boxId+" title", boxId+" contents");
+    	
+		boxCount++;
+    }
+    
+    
+    function serializeBoxes() {
+    	
+    	var objToSerialize = {};
+    	objToSerialize.boxObjs = vfpCanvas0.boxObjs;
+    	objToSerialize.connections = vfpCanvas0.connections;
+    	
+    	var jsonStr = JSON.stringify(objToSerialize);
+    	alert(jsonStr);
+    	    
+    }
+    
+    
+    
+    function initFromJSON() {
+    	var jsonStr = '{"boxObjs":{"box0":{"divId":"box0","numOfOutputs":"1","hasInput":true,"x":290,"y":70},"box1":{"divId":"box1","numOfOutputs":"1","hasInput":true,"x":590,"y":190},"box2":{"divId":"box2","numOfOutputs":"1","hasInput":true,"x":900,"y":60},"box3":{"divId":"box3","numOfOutputs":"1","hasInput":true,"x":280,"y":320}},"connections":[["box0-start0","box1-end0"],["box1-start0","box2-end0"],["box3-start0","box1-end0"]]}';
+    	objUnserialize = JSON.parse(jsonStr);
+    	
+    	boxObjs = objUnserialize.boxObjs;
+    	
+    	for (boxIn in boxObjs) {
+    		boxes.push(boxObjs[boxIn].divId);
+    		createBoxElement(boxObjs[boxIn]);
+    		boxCount++;
+    	}
+    	
+    	
+    	
+    	for (connI in objUnserialize.connections) {
+    		addConnection(objUnserialize.connections[connI][0],objUnserialize.connections[connI][1],dummy);	
+    	
+    	}
+    	
+    	initDraggableBoxes();
+
+    }
+    
+    
+    
+    
+    $(function() {
+    	
+    	//function to handle the semantics of adding connections 
+    	var addFunction = function allowConnection(start,end) {		
+    		
+    		//dummy alert for demo 
+    		alert("Added connection: "+start+" -> "+end);
+    		 
+    		//check if a connection can be added based 
+    		//based on the sematics of the app 
+    		return true; 
+    	}  
+    	
+    	//function to handle the semantics of removing connections 
+    	var removeFunction = function allowRemoveConnection(start,end) {
+    		
+    		//dummy alert for demo 
+    		alert("Removed connection: "+start+" -> "+end);
+    		
+    		//check if a connection can be added based 
+    		//based on the sematics of the app 
+    		return true; 
+    	}  
+    	
+    	
+    	//initialize the VFP canvas 
+     	vfpCanvas0 = new vfpCanvas(addFunction,removeFunction);
+     	vfpCanvas0.initDraggableBoxes();
+     	
+    });
+    
+    
+    </script>
+    
+
+
+
+	<button onClick="addBox();" >Add New Box</button>
+	<input type="checkbox" name="hasInput" value="yes" checked> input
+	<input type="radio" name="numOfOut"  value="0"> 0 <input type="radio" name="numOfOut"  value="1" checked> 1 <input type="radio" name="numOfOut" value="2" > 2
+	
+	<button onClick="serializeBoxes();" >Serialize</button>
+	
+	<div id="vfp_root" style="position: absolute; ">
+	<canvas id="myCanvasGrid" width="800" height="600"
+	style="border:1px solid #000000; position:absolute;">
+	</canvas> 
+	<div style="position: absolute; ">
+	<canvas id="myCanvas" width="800" height="600"
+	style="border:1px solid #000000; position:absolute;">
+	</canvas> 
+	</div>
+	</div>
+</html>

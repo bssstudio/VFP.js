@@ -1,0 +1,140 @@
+.startAreaText {
+	position: absolute;
+	right: 0px;
+	bottom: 50%;
+	
+	margin-bottom: -10px;
+	margin-right: 5px;
+}
+    
+.startArea {
+	width: 10px;
+	height: 10px;
+	border: 2px solid #333;
+	
+	background-color: #eee;
+	
+	position: absolute;
+	right: 0px;
+	bottom: 50%;
+	
+	margin-bottom: -10px;
+	margin-right: -10px;
+}
+    
+ .startArea:hover {
+ 	width: 20px;
+ 	height: 20px;
+ 	border: 2px solid #333;
+ 	
+ 	background-color: #eee;
+ 	
+ 	position: absolute;
+ 	right: 0px;
+ 	bottom: 50%;
+ 	
+ 	margin-bottom: -15px;
+ 	margin-right: -20px;
+ }
+ 
+    
+.startArea1-2 {
+	margin-bottom: -38px;
+}
+
+.startArea1-2:hover {
+	margin-bottom: -38px;
+}
+
+.startArea2-2:hover {
+	margin-bottom: -12px;
+}	
+ 
+.startArea2-2 {
+	margin-bottom: -12px;
+}
+    
+    
+    
+    
+.endAreaText {
+  	position: absolute;
+  	left: 5px;
+  	bottom: 50%;
+  	margin-bottom: -10px;
+}
+  
+.endArea {
+  	width: 10px;
+  	height: 10px;
+  	border: 2px solid #f33;
+  	background-color: #eee;
+  	
+  	position: absolute;
+  	left: 0px;
+  	bottom: 50%;
+  	
+  	margin-bottom: -10px;
+  	margin-left: -10px;
+}
+  
+.endArea-active {
+  	width: 20px;
+  	height: 20px;
+  	border: 2px solid #f33;
+  	background-color: #eee;
+  	
+  	position: absolute;
+  	left: 0px;
+  	bottom: 50%;
+  	
+  	margin-bottom: -10px;
+  	margin-left: -20px;
+}
+  
+.endArea-hover {
+  	width: 20px;
+  	height: 20px;
+  	border: 2px solid #f33;
+  	background-color: #fee;
+  	
+  	position: absolute;
+  	left: 0px;
+  	bottom: 50%;
+  	
+  	margin-bottom: -10px;
+  	margin-left: -20px;
+}
+  
+.box {
+  	height: 150px;
+  	width: 150px;
+  	position: absolute;
+
+	top: 30px;
+	left: 30px;
+	
+	background-color: #fff;
+	border: 1px solid #ccc;
+	color: #ccc;
+}
+  
+.connectionAncor {
+  	height: 6px;
+  	width: 6px;
+  	border: 2px solid #bbb;
+  	background-color: #ccc;
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	margin-top: -4px;
+  	margin-left: -4px;
+  	z-index: 0;
+  	cursor: pointer;
+}
+  
+  
+body {
+  	margin: 100px;
+}
+ 
